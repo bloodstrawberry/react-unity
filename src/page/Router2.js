@@ -4,6 +4,7 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 const Router2 = () => {
     const {
         unityProvider,
+        sendMessage, // unity 함수를 호출하기 위한 sendMessage 추가
         UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate,
       } = useUnityContext({
         loaderUrl: "build/html-hosting.loader.js",
@@ -22,8 +23,10 @@ const Router2 = () => {
 
   return (
     <div>
+      {/* 버튼 추가 */}
+      <button onClick={() => sendMessage("Cube", "changeRotate")}>Rotate!!</button>
       <div>Router 2</div>
-      <Unity unityProvider={unityProvider} />
+      <Unity unityProvider={unityProvider} style={{width:"50%"}}/>
     </div>
   );
 };
